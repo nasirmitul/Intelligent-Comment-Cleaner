@@ -1,0 +1,59 @@
+{
+  "name": "intelligent-comment-cleaner",
+  "displayName": "Intelligent Comment Cleaner",
+  "description": "Professional comment analysis and removal tool",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.intelligentRemoveComments",
+        "title": "Clean Comments (Standard)",
+        "category": "Comment Cleaner"
+      },
+      {
+        "command": "extension.removeAllComments",
+        "title": "Remove ALL Comments (Nuclear)",
+        "category": "Comment Cleaner"
+      },
+      {
+        "command": "extension.aggressiveCleanComments",
+        "title": "Clean Comments (Aggressive)",
+        "category": "Comment Cleaner"
+      },
+      {
+        "command": "extension.conservativeCleanComments",
+        "title": "Clean Comments (Conservative)",
+        "category": "Comment Cleaner"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "extension.intelligentRemoveComments",
+          "when": "editorTextFocus",
+          "group": "1_modification"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "extension.intelligentRemoveComments",
+        "key": "ctrl+shift+alt+c",
+        "mac": "cmd+shift+alt+c",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "node ./node_modules/typescript/bin/tsc -p ./",
+    "watch": "node ./node_modules/typescript/bin/tsc -watch -p ./"
+  }
+}
